@@ -13,6 +13,9 @@
   <body>
     <section class="section">
       <div class="container">
+        <% if alert %>
+          <p class="notification is-danger  has-text-centered"><%= alert %></p>
+        <% end %>
         <%= yield %>
       </div>
     </section>
