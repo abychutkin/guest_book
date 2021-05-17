@@ -1,2 +1,12 @@
-<h1>Message#index</h1>
-<p>Find me in app/views/message/index.html.erb</p>
+<%= form_with(url: "/message/new", local: true) do |form| %>
+  <%= form.label :name, "Имя" %>
+  <%= form.text_field :name %>
+  
+  <%= form.label :email, "Электронная почта" %>
+  <%= form.email_field :email %>
+  
+  <%= form.label :text, "Текст сообщения" %>
+  <%= form.text_area :text %>
+  
+  <%= form.submit value: "Отправить" %>
+<% end %>
