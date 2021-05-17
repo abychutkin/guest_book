@@ -1,12 +1,41 @@
+<h1 class="title">Поделитесь с другими</h1>
 <%= form_with(url: "/message/new", local: true) do |form| %>
-  <%= form.label :name, "Имя" %>
-  <%= form.text_field :name %>
+  <div class="field">
+    <%= form.label :name, "Имя", class: "label" %>
+    <div class="control">
+      <%= form.text_field :name, class: "input" %>
+    </div>
+  </div>
+
+  <div class="field">  
+    <%= form.label :email, "Электронная почта", class: "label" %>
+    <div class="control">
+      <%= form.email_field :email, class: "input" %>
+    </div>
+  <div>
   
-  <%= form.label :email, "Электронная почта" %>
-  <%= form.email_field :email %>
+  <div class="field">
+    <%= form.label :text, "Текст сообщения", class: "label" %>
+    <div class="control">
+      <%= form.text_area :text, class: "textarea" %>
+    </div>
+  </div>
   
-  <%= form.label :text, "Текст сообщения" %>
-  <%= form.text_area :text %>
-  
-  <%= form.submit value: "Отправить" %>
+  <div class="control">
+    <%= form.submit value: "Отправить", class: "button is-primary" %>
+  </div>
+  <br>
+  <% if @messages.any? %>
+    <% @messages.each do |message| %>
+      <div class="card">
+        <div class="card-content">
+          <p class="title is-4"><%= message.name %></p>
+          <p class="subtitle is-6"><%= message.email %></p>
+          <div class="content"><%= message.text %></div>
+        </div>
+      </div>
+    <% end %>
+    <br>
+    <br>
+  <% end %>
 <% end %>
